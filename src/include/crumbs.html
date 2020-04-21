@@ -1,3 +1,24 @@
-    <!-- 详情页切换 -->
-    <div class="cut"><a href="javascript:;" title="" class="fl">上一篇：<span class="transit">@@left</span></a><a href="javascript:;" title="" class="fr">下一篇：<span class="transit">@@right</span></a></div>
-    <!-- 详情页切换 -->
+<!-- 面包屑 start -->
+<div class="crumbs">
+    <div class="center flex flex_column_center @@if(context.numbers != " " ){flex_row_justify}  @@if(context.numbers === " " ){flex_row_end}">
+        @@if(context.numbers != " " ){
+        <div class="monu clear_float">
+            @@for(var i = 0; i < context.numbers; i++){ <a href="`+context.list[i].url+`" title=""
+                `+(context.list[i].state==="active" ? 'class="active"' : '' )+`>`+context.list[i].name+`</a>
+                }
+        </div>
+        }
+        <div class="flex item">
+            <i class="iconfont icon-zhuye-copy"></i>当前位置：<a href="/" title="">首页</a><span
+                class="iconfont icon-sanjiao-r"></span><a href=@@secondSrc title="@@second" @@if(context.three===' '
+                ){class="active" }>@@second</a>
+            @@if(context.three != ' '){
+            <span class="iconfont icon-sanjiao-r"></span><a href=@@threeSrc class=" @@if(context.four === ' '){active}">@@three</a>
+            }
+            @@if(context.four != ' '){
+            <span class="iconfont icon-sanjiao-r"></span><a href="javascript:;" class="active">@@four</a>
+            }
+        </div>
+    </div>
+</div>
+<!-- 面包屑 end -->

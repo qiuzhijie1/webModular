@@ -584,7 +584,7 @@ textarea {
         width: auto;
         padding: 0 17px;
     }
-    
+
     .noPage {
         opacity: 0.5;
         cursor: default;
@@ -666,8 +666,8 @@ textarea {
 
 
 
-/* nav START */
-.nav {
+/* crumbs START */
+.crumbs {
     height: 60px;
     background-color: #f4f4f4;
 
@@ -742,44 +742,14 @@ textarea {
     }
 }
 
-/* nav END */
-
-
-
-/* crumbs START */
-.crumbs {
-    .crumbs_list {
-        height: 66px;
-        font-size: 12px;
-        color: #aaaaaa;
-
-        .iconfont {
-            font-size: 16px;
-            font-weight: 600;
-            opacity: 0.85;
-            margin: 0 1px;
-        }
-
-        a {
-            @include transition(color, 0.15s);
-
-            &:last-child,
-            &:not(:last-child):hover {
-                color: #1469bf;
-            }
-
-            &:last-child {
-                cursor: text;
-            }
-        }
-    }
-}
-
 /* crumbs END */
 
 
+
+
+
 /* 详情页切换 */
-.cut {
+.switch {
     color: #888888;
     overflow: hidden;
 
