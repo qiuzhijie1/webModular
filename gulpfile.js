@@ -8,6 +8,8 @@ const connect = require('gulp-connect'); //搭建临时服务器
 const open = require('open'); //直接运行临时服务器
 
 
+
+
 gulp.task('fileInclude', function () {
     return gulp.src(['src/**/*.html'])
         .pipe(fileInclude({
@@ -60,17 +62,21 @@ gulp.task('watch', ['default'], function () {
     gulp.watch('src/js/*.js', ['js']);
 })
 
-gulp.task('server', ['default'], function () { //搭建一个临时服务器，包括了文件监听
+
+gulp.task('webserver', ['default'], function () {
     connect.server({
-        root: 'dist/',
-        port: '7777', //端口
-        livereload: false //实时刷新
-    })
+        root: "dist/",//代理的项目的目录
+        port: '9999',　　//端口号
+        livereload: false, //不实时修改联动
+        // host: '::',　　//之前没加这个不能让手机访问，加上这个就可以了
+
+    });
     gulp.watch('src/**/*.html', ['fileInclude']);
     gulp.watch('src/less/*.less', ['less']);
     gulp.watch('src/sass/*.*', ['sass']);
     gulp.watch('src/css/*.css', ['css']);
     gulp.watch('src/js/*.js', ['js']);
 
-    open('http://localhost:7777');
+    open('http://127.0.0.1:9999');
+    // open('http://192.168.1.109:9999'); //此处ip为本机ip的话局域网内均可访问
 })
