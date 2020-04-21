@@ -1,0 +1,166 @@
+<!-- header START -->
+<header class="header">
+    <div class="pc">
+        <div class="center">
+            <div class="head_top flex flex_column_center flex_row_justify">
+                <div class="name">
+                    <h1 class="cn">广东省中山市质量计量监督检测所</h1>
+                    <p class="en">Guangdong Zhongshan Supervision Testing Institute of Quality & Metrology</p>
+                </div>
+                <div class="head_search">
+                    <form action="javascript:;" class="flex flex_column_center">
+                        <input type="text" placeholder="请输入新闻关键词">
+                        <button type="submit" class="iconfont iconsousuo btn"></button>
+                    </form>
+                </div>
+                <div class="head_tel flex flex_column_center">
+                    <div class="icon"><i class="iconfont icontel-s"></i></div>
+
+                    <div class="txt">
+                        <p>质检业务热线：<a href="javascript:;" title="">0760-88307614</a></p>
+                        <p>计量业务热线：<a href="javascript:;" title="">0760-88331404</a></p>
+                        <p>灯具业务热线：<a href="javascript:;" title="">0760-88162830</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="head_monu">
+            <div class="center">
+                <ul class="flex">
+                    <li class="black   ">
+                    <a href=" index.html" title="">首页</a>
+                    </li>
+                    <li class="black ">
+                        <a href="service.html" title="">服务项目</a>
+                    </li>
+                    <li class="black ">
+                        <a href="news.html" title="">新闻资讯</a>
+                    </li>
+                    <li class="black ">
+                        <a href="about.html" title="">关于我们</a>
+                    </li>
+                    <li class="black ">
+                        <a href="centre.html" title="">国家中心及省站</a>
+                    </li>
+                    <li class="black  ">
+                        <a href="contact.html" title="">联系我们</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="mobile_monu">
+        <div class="flex flex_row_justify flex_column_center top">
+            <h1 class="title">广东省中山市质量计量监督检测所</h1>
+            <div class="three col">
+                <div class="hamburger" id="hamburger-1"><span class="line"></span><span class="line"></span><span
+                        class="line"></span></div>
+            </div>
+        </div>
+        <div class="mobile_mask">
+            <ul>
+                <li>
+                    <a href="index.html" title="" class="flex flex_row_justify flex_column_center">首页<i
+                            class="iconfont iconzuojiantou-more"></i>
+                    </a>
+                </li>
+                <li>
+                    <a class="flex flex_row_justify flex_column_center" href="javascript:;" title="">
+                        服务项目
+                        <i class="iconfont iconzuojiantou-more"></i>
+                    </a>
+                    <div class="mobile_secondary">
+                        <ul>
+                            <a href="javascript:;" title="">
+                                <li>次级导航1</li>
+                            </a>
+                            <a href="javascript:;" title="">
+                                <li>次级导航2</li>
+                            </a>
+                            <a href="javascript:;" title="">
+                                <li>次级导航3</li>
+                            </a>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="news.html" title="" class="flex flex_row_justify flex_column_center">新闻资讯<i
+                            class="iconfont iconzuojiantou-more"></i></a>
+                </li>
+                <li>
+                    <a href="about.html" title="" class="flex flex_row_justify flex_column_center">关于我们<i
+                            class="iconfont iconzuojiantou-more"></i></a>
+                </li>
+                <li>
+                    <a href="javascript:;" title="" class="flex flex_row_justify flex_column_center">国家中心及省站<i
+                            class="iconfont iconzuojiantou-more"></i></a>
+                    <div class="mobile_secondary">
+                        <ul>
+                            <a href="javascript:;" title="">
+                                <li>次级导航1</li>
+                            </a>
+                            <a href="javascript:;" title="">
+                                <li>次级导航2</li>
+                            </a>
+                            <a href="javascript:;" title="">
+                                <li>次级导航3</li>
+                            </a>
+                            <a href="javascript:;" title="">
+                                <li>次级导航4</li>
+                            </a>
+                            <a href="javascript:;" title="">
+                                <li>次级导航5</li>
+                            </a>
+                            <a href="javascript:;" title="">
+                                <li>次级导航6</li>
+                            </a>
+                            <a href="javascript:;" title="">
+                                <li>次级导航7</li>
+                            </a>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="contact.html" title="" class="flex flex_row_justify flex_column_center">联系我们<i
+                            class="iconfont iconzuojiantou-more"></i></a>
+                </li>
+                <form action="javascrit:;" class="mobile_search flex flex_column_center">
+                    <input type="text" placeholder="请输入新闻关键词">
+                    <i class="iconfont iconsousuo"></i>
+                </form>
+            </ul>
+        </div>
+    </div>
+</header>
+
+
+<script>
+    $(document).ready(function () {
+        $(".hamburger").click(function () {
+            $(this).toggleClass("is-active");
+        });
+    });
+    $(".hamburger").click(function () {
+        if ($(".mobile_mask").hasClass("active")) {
+            $(".mobile_mask").removeClass("active");
+        } else {
+            $(".mobile_mask").addClass("active");
+        }
+    })
+    $(".mobile_mask>ul>li").click(function () {
+        if ($(this).hasClass("active")) {
+            $(".mobile_mask>ul>li").removeClass("active");
+            $(".mobile_mask>ul>li").find(".mobile_secondary").stop(true,false).slideUp("second_active");
+        } else {
+            if ($(this).find(".mobile_secondary").length > 0) {
+                $(".mobile_mask>ul>li").removeClass("active");
+                $(this).addClass("active");
+                $(".mobile_mask>ul>li").find(".mobile_secondary").slideUp("second_active");
+                $(this).find(".mobile_secondary").stop(true,false).slideDown("second_active");
+            }
+        }
+    })
+</script>
+<!-- header END -->

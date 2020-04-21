@@ -1,0 +1,367 @@
+// 颜色
+$color: #1f6cc1;
+$bgcolor:#f8f8f8;
+$black_color:#000000;
+$white_color:#ffffff;
+
+// 宽度
+$minWidth: 1200px;
+$maxWidth: 1920px;
+$centerWidth: 1200px;
+
+
+// 字体
+$fontSize: 16px;
+$fontsColor: #333;
+$fontFamily: 微软雅黑;
+
+
+// 动画
+$transitionTime:0.3s;
+
+
+
+
+
+
+
+
+// 公共混合模型
+
+@mixin translateNum ($x, $y, $z) {
+    // 位移
+    //transform: translate();
+    -o-transform: translate3d($x, $y, $z);
+    -moz-transform: translate3d($x, $y, $z);
+    -webkit-transform: translate3d($x, $y, $z);
+    transform: translate3d($x, $y, $z);
+}
+
+@mixin transformScale ($times) {
+    // 缩放
+    //transform: scale();
+    -o-transform: translate3d(0, 0, 0) scale($times);
+    -moz-transform: translate3d(0, 0, 0) scale($times);
+    -webkit-transform: translate3d(0, 0, 0) scale($times);
+    transform: translate3d(0, 0, 0) scale($times);
+}
+
+@mixin transition ($obj, $time) {
+    //过度
+    -o-transition: $obj $time;
+    -moz-transition: $obj $time;
+    -webkit-transition: $obj $time;
+    transition: $obj $time;
+}
+
+@mixin transitionTime ($time) {
+    //过度时间
+    -o-transition-duration: $time;
+    -moz-transition-duration: $time;
+    -webkit-transition-duration: $time;
+    transition-duration: $time;
+}
+
+@mixin transitionDelay ($time) {
+    //过度延时
+    -o-transition-delay: $time;
+    -moz-transition-delay: $time;
+    -webkit-transition-delay: $time;
+    transition-delay: $time;
+}
+
+@mixin transitionFunction ($type) {
+    //过度动画运动轨迹
+    -webkit-transition-timing-function: $type;
+    -moz-transition-timing-function: $type;
+    -ms-transition-timing-function: $type;
+    transition-timing-function: $type;
+}
+
+@mixin transformRotateX ($x) {
+    // 旋转
+    -o-transform: rotateX($x);
+    -moz-transform: rotateX($x);
+    -webkit-transform: rotateX($x);
+    transform: rotateX($x);
+}
+
+@mixin transformRotateY ($y) {
+    // 旋转Y
+    -o-transform: rotateY($y);
+    -moz-transform: rotateY($y);
+    -webkit-transform: rotateY($y);
+    transform: rotateY($y);
+}
+
+@mixin transformRotateZ ($z) {
+    // 旋转
+    -o-transform: rotateZ($z);
+    -moz-transform: rotateZ($z);
+    -webkit-transform: rotateZ($z);
+    transform: rotateZ($z);
+}
+
+@mixin animationDelay ($time) {
+    //动画延时
+    -o-animation-delay: $time;
+    -moz-animation-delay: $time;
+    -webkit-animation-delay: $time;
+    animation-delay: $time;
+}
+
+@mixin animationTime ($time) {
+    //动画时间
+    -o-animation-duration: $time;
+    -moz-animation-duration: $time;
+    -webkit-animation-duration: $time;
+    animation-duration: $time;
+}
+
+@mixin animationFn ($name, $time) {
+    //创建一个简单动画
+    -o-animation: $name $time forwards;
+    -moz-animation: $name $time forwards;
+    -webkit-animation: $name $time forwards;
+    animation: $name $time forwards;
+}
+
+// @mixin animationLoop($n, $i: 1, $time) when ($i <=$n) {
+
+//     //动画延时，从1开始 变量在左边 ${x}
+//     &:nth-child(${i}) {
+//         .animationDelay($time * $i - $time);
+//     }
+
+//     .animationLoop($n, ($i+1), $time);
+// }
+
+
+@mixin muchText ($num, $lineH, $judge) {
+    //多行文本溢出隐藏
+    overflow: hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: $num;
+    -webkit-box-orient: vertical;
+    line-height: $lineH;
+
+    @if $judge {
+        max-height: $lineH * $num;
+        min-height: $lineH * $num;
+    }
+}
+
+
+@mixin placeholderColor ($color) {
+
+    // input提示属性文字颜色
+    &::-webkit-input-placeholder {
+        color: $color;
+    }
+
+    &:-moz-placeholder {
+        color: $color;
+    }
+
+    &:-ms-input-placeholder {
+        color: $color;
+    }
+
+    &::placeholder {
+        color: $color;
+    }
+}
+
+@mixin gradient($Angle, $before, $after) {
+    // 线性渐变
+    background-image: linear-gradient($Angle, $before, $after);
+    background-image: -o-linear-gradient($Angle, $before, $after);
+    background-image: -ms-linear-gradient($Angle, $before, $after);
+    background-image: -webkit-linear-gradient($Angle, $before, $after);
+    background-image: -moz-linear-gradient($Angle, $before, $after);
+}
+
+
+@mixin text_gradient($Angle, $before, $after, $ie) {
+    // 文字线性渐变
+    @include gradient($Angle, $before, $after);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: $ie;
+}
+
+@mixin box-shadow($shadows...) {
+    // 阴影
+    -moz-box-shadow: $shadows;
+    -webkit-box-shadow: $shadows;
+    box-shadow: $shadows;
+}
+
+
+
+
+
+
+@mixin positionCenter () {
+    //定位居中
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+@mixin background_img() {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+
+
+@mixin flex {
+    display: box;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+@mixin flex_center {
+    display: box;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    -o-justify-content: center;
+    justify-content: center;
+
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    -o-align-items: center;
+    align-items: center;
+}
+
+@mixin flex_column {
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    -o-flex-direction: column;
+    flex-direction: column;
+}
+
+@mixin flex_wrap {
+    -webkit-box-lines: multiple;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    -o-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+@mixin flex_row_center {
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    -o-justify-content: center;
+    justify-content: center;
+}
+
+@mixin flex_row_start {
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -moz-justify-content: flex-start;
+    -ms-justify-content: flex-start;
+    -o-justify-content: flex-start;
+    justify-content: flex-start;
+}
+
+@mixin flex_row_end {
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+    -moz-justify-content: flex-end;
+    -ms-justify-content: flex-end;
+    -o-justify-content: flex-end;
+    justify-content: flex-end;
+}
+
+@mixin flex_row_justify {
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    -ms-justify-content: space-between;
+    -o-justify-content: space-between;
+    justify-content: space-between;
+}
+
+@mixin flex_column_center {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    -o-align-items: center;
+    align-items: center;
+}
+
+@mixin flex_column_start {
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+    -moz-align-items: flex-start;
+    -ms-align-items: flex-start;
+    -o-align-items: flex-start;
+    align-items: flex-start;
+}
+
+@mixin flex_column_end {
+    -webkit-box-align: end;
+    -webkit-align-items: flex-end;
+    -moz-align-items: flex-end;
+    -ms-align-items: flex-end;
+    -o-align-items: flex-end;
+    align-items: flex-end;
+}
+
+@mixin flex1 {
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+@mixin flex_rank_1 {
+    -webkit-box-ordinal-group: 1;
+    -moz-box-ordinal-group: 1;
+    -ms-flex-order: 1;
+    -webkit-order: 1;
+    order: 1;
+}
+
+@mixin flex_rank_2 {
+    -webkit-box-ordinal-group: 2;
+    -moz-box-ordinal-group: 2;
+    -ms-flex-order: 2;
+    -webkit-order: 2;
+    order: 2;
+}
+
+@mixin oneText {
+    //单行文本溢出隐藏
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
