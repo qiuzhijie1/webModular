@@ -272,7 +272,7 @@ textarea {
   display: -webkit-flex;
   display: flex; }
 
-.flex_center, .nav .center .item a {
+.flex_center, .crumbs .center .item a {
   display: box;
   display: -webkit-box;
   display: -moz-box;
@@ -507,11 +507,11 @@ textarea {
   100% {
     transform: translateY(2px) rotate(360deg); } }
 
-/* nav START */
-.nav {
+/* crumbs START */
+.crumbs {
   height: 60px;
   background-color: #f4f4f4; }
-  .nav .center .monu a {
+  .crumbs .center .monu a {
     height: 100%;
     line-height: 60px;
     width: 100px;
@@ -522,37 +522,37 @@ textarea {
     -moz-transition: all 0.3s;
     -webkit-transition: all 0.3s;
     transition: all 0.3s; }
-    .nav .center .monu a:hover {
+    .crumbs .center .monu a:hover {
       background-color: #1696f4;
       color: #ffffff; }
-  .nav .center .monu .active {
+  .crumbs .center .monu .active {
     background-color: #1696f4;
     color: #ffffff; }
-  .nav .center .item {
+  .crumbs .center .item {
     position: relative;
     line-height: 60px;
     color: #888888;
     font-size: 14px; }
-    .nav .center .item a {
+    .crumbs .center .item a {
       z-index: 10;
       position: relative;
       -o-transition: all 0.3s;
       -moz-transition: all 0.3s;
       -webkit-transition: all 0.3s;
       transition: all 0.3s; }
-      .nav .center .item a:hover {
+      .crumbs .center .item a:hover {
         color: #1f6cc1; }
-    .nav .center .item .active {
+    .crumbs .center .item .active {
       color: #1f6cc1; }
-    .nav .center .item .iconfont {
+    .crumbs .center .item .iconfont {
       font-size: 14px;
       font-weight: 600; }
-    .nav .center .item .icon-zhuye-copy {
+    .crumbs .center .item .icon-zhuye-copy {
       color: #9f9f9f;
       font-size: 16px;
       margin-right: 10px;
       font-weight: 500; }
-  .nav.fixed {
+  .crumbs.fixed {
     position: fixed;
     top: 170px;
     width: 100%;
@@ -562,38 +562,17 @@ textarea {
     z-index: 100;
     box-shadow: 0, 15px, 15px rgba(0, 0, 0, 0.018); }
 
-/* nav END */
-/* crumbs START */
-.crumbs .crumbs_list {
-  height: 66px;
-  font-size: 12px;
-  color: #aaaaaa; }
-  .crumbs .crumbs_list .iconfont {
-    font-size: 16px;
-    font-weight: 600;
-    opacity: 0.85;
-    margin: 0 1px; }
-  .crumbs .crumbs_list a {
-    -o-transition: color 0.15s;
-    -moz-transition: color 0.15s;
-    -webkit-transition: color 0.15s;
-    transition: color 0.15s; }
-    .crumbs .crumbs_list a:last-child, .crumbs .crumbs_list a:not(:last-child):hover {
-      color: #1469bf; }
-    .crumbs .crumbs_list a:last-child {
-      cursor: text; }
-
 /* crumbs END */
 /* 详情页切换 */
-.cut {
+.switch {
   color: #888888;
   overflow: hidden; }
-  .cut a span {
+  .switch a span {
     -o-transition: all 0.3s;
     -moz-transition: all 0.3s;
     -webkit-transition: all 0.3s;
     transition: all 0.3s; }
-  .cut a:hover span {
+  .switch a:hover span {
     color: #1f6cc1; }
 
 /* 返回头部 */
