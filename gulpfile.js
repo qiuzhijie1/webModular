@@ -68,7 +68,7 @@ gulp.task('webserver', ['default'], function () {
         root: "dist/",//代理的项目的目录
         port: '9999',　　//端口号
         livereload: false, //不实时修改联动
-        host: '::',　　//之前没加这个不能让手机访问，加上这个就可以了
+        // host: '::',　　//之前没加这个不能让手机访问，加上这个就可以了
 
     });
     gulp.watch('src/**/*.html', ['fileInclude']);
@@ -77,6 +77,6 @@ gulp.task('webserver', ['default'], function () {
     gulp.watch('src/css/*.css', ['css']);
     gulp.watch('src/js/*.js', ['js']);
 
-    // open('http://127.0.0.1:9999');
-    open('http://192.168.0.12:9999'); //此处ip为本机ip的话局域网内均可访问
+    open('http://127.0.0.1:9999');
+    // open('http://192.168.0.12:9999'); //此处ip为本机ip的话局域网内均可访问
 })
