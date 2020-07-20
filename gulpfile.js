@@ -30,7 +30,9 @@ gulp.task('less', function () {
 
 gulp.task('sass', function () {
     return gulp.src(['src/sass/*.*', '!src/sass/mixin.*'])
-        .pipe(sass())
+        .pipe(sass({
+            outputStyle: 'compact'
+          }))
         .pipe(gulp.dest('src/css/'))
         .pipe(livereload())
         .pipe(connect.reload());
