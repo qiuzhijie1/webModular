@@ -126,16 +126,14 @@ $transitionTime:0.3s;
     animation: $name $time forwards;
 }
 
-// @mixin animationLoop($n, $i: 1, $time) when ($i <=$n) {
-
-//     //动画延时，从1开始 变量在左边 ${x}
-//     &:nth-child(${i}) {
-//         .animationDelay($time * $i - $time);
-//     }
-
-//     .animationLoop($n, ($i+1), $time);
-// }
-
+@mixin animationLoop($n, $time) {
+    //动画延时，从1开始
+   @for $i from 1 through $n {
+       &:nth-child(#{$i}) {
+           @include animationDelay($time * $i - $time);
+       }
+   }
+}
 
 @mixin muchText ($num, $lineH, $judge) {
     //多行文本溢出隐藏

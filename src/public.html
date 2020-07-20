@@ -9,6 +9,10 @@
     @@include("./include/resource.html")
 </head>
 
+
+
+<!-- header-头部/nav-链接区块/main-主体/article-复用模块/aside-独立模块/section-区块/footer-底部 -->
+
 <body>
     @@include("./include/header.html", {
     "index": "active"
@@ -17,28 +21,29 @@
 
 
     @@include("./include/crumbs.html", {
-    "second": "服务支持",
-    "secondSrc": "download.html",
-    "three": "资料下载",
-    "threeSrc": "javacsript:;",
-    "four": " ",
-
-
-    "numbers": "3",
-    "list":[{
-    "url":"download.html",
-    "name":"资料下载",
-    "state":"active"
-    },{
-    "url":"sample.html",
-    "name":"样品申请"
-    },{
-    "url":"message.html",
-    "name":"留言反馈"
-    }]
-
-    })
-
+        "number": "2",
+    
+        "list":[{
+            "url":"news.html",
+            "name":"公司新闻",
+            "state":"active"
+        },{
+            "url":"news.html",
+            "name":"行业动态"
+        }],
+    
+        "numbers": "2",
+    
+        "lists":[{
+            "url":"news.html",
+            "name":"新闻中心"
+        },{
+            "url":"javascript:;",
+            "name":"公司新闻",
+            "state":"active"
+        }]
+    
+        })
 
 
 
