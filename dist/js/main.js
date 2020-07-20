@@ -71,11 +71,6 @@ $(function () {
 
 
 
-
-
-
-
-
 	/* 取消冒泡 IE兼容 */
 	function fn(event) {
 		var ev = window.event || event;
@@ -85,16 +80,6 @@ $(function () {
 			ev.cancelBubble = true;
 		}
 	}
-
-
-	// 头部菜单下拉
-
-	$('.header .head_monu>.center>ul>li').hover(function () {
-		$(".down_monu").hide();
-		$(this).find(".down_monu").stop(true, false).show(300);
-	}, function () {
-		$(this).find(".down_monu").stop(true, false).hide(300);
-	})
 
 
 
@@ -136,26 +121,6 @@ $(function () {
 	scrollTop('.animate_fadeDown10', 'fadeInDown10');
 
 	scrollTop('.animate_fadeIn', 'fadeIn');
-
-
-	// 弹窗
-	$(".picture_click").click(function () {
-		$(".picture_pop").show();
-	})
-	$(".trademark_click").click(function () {
-		var classid = $(this).data("id");
-		if (classid != undefined) {
-			$('.trademark_pop .content .to_class select').val(classid);
-		}
-		$(".trademark_pop").show();
-	})
-	$('.exit').click(function () {
-		exit();
-	})
-	function exit() {
-		$(".trademark_pop").hide();
-		$(".picture_pop").hide();
-	}
 
 });
 
@@ -267,3 +232,55 @@ function switcherActive(el, container) {
 // 		}
 // 	})
 // }
+
+
+
+
+//rem 手机
+(function (designWidth, maxWidth) {
+	var doc = document,
+		win = window,
+		docEl = doc.documentElement,
+		remStyle = document.createElement("style"),
+		tid;
+
+	function refreshRem() {
+		var width = docEl.getBoundingClientRect().width;
+		maxWidth = maxWidth || 750;
+		width > maxWidth && (width = maxWidth);
+		width < 320 && (width = 320);
+		var rem = width * 100 / designWidth;
+		remStyle.innerHTML = 'html{font-size:' + rem + 'px;}';
+	}
+
+	if (docEl.firstElementChild) {
+		docEl.firstElementChild.appendChild(remStyle);
+	} else {
+		var wrap = doc.createElement("div");
+		wrap.appendChild(remStyle);
+		doc.write(wrap.innerHTML);
+		wrap = null;
+	}
+	//要等 wiewport 设置好后才能执行 refreshRem，不然 refreshRem 会执行2次；
+	refreshRem();
+
+	win.addEventListener("resize", function () {
+		clearTimeout(tid); //防止执行两次
+		tid = setTimeout(refreshRem, 300);
+	}, false);
+
+	win.addEventListener("pageshow", function (e) {
+		if (e.persisted) { // 浏览器后退的时候重新计算
+			clearTimeout(tid);
+			tid = setTimeout(refreshRem, 300);
+		}
+	}, false);
+
+	if (doc.readyState === "complete") {
+		doc.body.style.fontSize = "16px";
+	} else {
+		doc.addEventListener("DOMContentLoaded", function (e) {
+			doc.body.style.fontSize = "16px";
+		}, false);
+	}
+})(750, 750);

@@ -11,45 +11,13 @@
 </head>
 
 <body>
-    @@include("./include/header.html", {
-    "index": "active"
-    })
 
-    <style>
-        .box1 {
-            width: 100px;
-            height: 100px;
-            background-color: red;
-            float: left;
-            margin-right: 30px;
-            transition: al, 0.5s;
-        }
-
-        .box1:hover {
-            background-color: green;
-        }
-
-        .box2 {
-            float: left;
-            margin-right: 30px;
-            width: 100px;
-            height: 100px;
-            background-color: blue;
-        }
-    </style>
     <main class="index">
-        <marquee class="flex flex_row_justify flex_column_center clear_float" style="width: 100%;" onMouseOut="this.start()" onMouseOver="this.stop()">
-            <a class="box1" href=""></a>
-            <div class="box1"></div>
-            <div class="box2"></div>
-            <div class="box1"></div>
-            <div class="box1"></div>
-        </marquee>
+ 
     </main>
 
 
 
-    @@include("./include/footer.html")
 
     <script>
         var winW = $(window).width();
@@ -61,72 +29,6 @@
             paginationClickable: true,
         })
 
-
-        $(".index .main3 .top .left .title .cn").hover(function () {
-            var winW = $(window).width();
-            if (winW > 1024) {
-                $(".index .main3 .top .left .title .cn").removeClass("active");
-                $(this).addClass("active");
-                var about_index = $(".index .main3 .top .left .title .cn").index(this);
-                $(".index .main3 .top .left .content").children().addClass("hide");
-                $(".index .main3 .top .left .content").children().eq(about_index).removeClass("hide");
-            }
-        }, function () { })
-
-        if (winW > 1024) {
-            $(".index .main3 .top .left .title .cn").hover(function () {
-                new Swiper('.index .main3 .swiper-container', {
-                    autoplay: 5000,//可选选项，自动滑动
-                    paginationClickable: true,
-                    spaceBetween: 20,
-                    slidesPerColumn: 2,
-                    slidesPerGroup: 6,
-                    slidesPerView: 3,//'auto'
-                    // loop: true
-                    breakpoints: {
-                        //当宽度小于等于640
-                        780: {
-                            slidesPerGroup: 3,
-                            slidesPerView: 3,
-                            slidesPerColumn: 1,
-                        },
-                        640: {
-                            slidesPerGroup: 1,
-                            slidesPerView: 2,
-                            slidesPerColumn: 1,
-                        }
-                    }
-                })
-            }, function () { })
-        } else {
-            new Swiper('.index .main3 .swiper-container', {
-                autoplay: 5000,//可选选项，自动滑动
-                paginationClickable: true,
-                spaceBetween: 20,
-                slidesPerColumn: 2,
-                slidesPerGroup: 6,
-                slidesPerView: 3,//'auto'
-                // loop: true
-                breakpoints: {
-                    //当宽度小于等于640
-                    780: {
-                        slidesPerGroup: 3,
-                        slidesPerView: 3,
-                        slidesPerColumn: 1,
-                    },
-                    640: {
-                        slidesPerGroup: 1,
-                        slidesPerView: 2,
-                        slidesPerColumn: 1,
-                    },
-                    460: {
-                        slidesPerGroup: 1,
-                        slidesPerView: 1,
-                        slidesPerColumn: 1,
-                    }
-                }
-            })
-        }
 
     </script>
 
