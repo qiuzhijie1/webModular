@@ -1,12 +1,5 @@
 @charset "UTF-8";
 /* 响应 */
-@media screen and (max-width: 1199px) {
-  body,
-  html {
-    width: 100%; }
-  body {
-    /* padding: 0 1%; */ }
-  .center {
-    width: 100%;
-    margin: 0;
-    padding: 0 15px; } }
+@media screen and (max-width: 1199px) { body, html { width: 100%; }
+  body { /* padding: 0 1%; */ }
+  .center { width: 100%; margin: 0; padding: 0 15px; } }
