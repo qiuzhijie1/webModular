@@ -44,22 +44,26 @@ input:-internal-autofill-previewed, input:-internal-autofill-selected { -webkit-
 input, textarea { -webkit-appearance: none; }
 
 /*浏览器低版本提示*/
-#brower-max { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 1000; display: none; }
+/* 浏览器低版本提示 START */
+#browser_mask { background-color: #000; background: rgba(0, 0, 0, 0.7); filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70); z-index: 1000000000; position: absolute; height: 100%; width: 100%; top: 0; left: 0; right: 0; bottom: 0; margin: auto; display: none; }
 
-#brower-max.cur00 { display: block; }
+#browser_hint { z-index: 9999999999; position: absolute; display: none; height: 100%; width: 100%; top: 0; left: 0; right: 0; bottom: 0; margin: auto; }
 
-#brower { position: fixed; width: 400px; height: 200px; background-color: #fff; text-align: center; top: 50%; left: 50%; margin-left: -200px; margin-top: -100px; padding-top: 50px; z-index: 1000; display: none; }
+#browser_hint #browser_container .explain { width: 800px; color: #555; margin: 0 auto; position: absolute; text-align: center; background: #fff; left: 50%; top: 50%; padding: 50px; margin-top: -150px; margin-left: -450px; }
 
-#brower.cur00 { display: block; }
+#browser_hint #browser_container .explain .explain_title { font-size: 22px; font-weight: bold; }
 
-#brower p { margin-top: 20px; }
+#browser_hint #browser_container .explain .explain_title span { color: red; }
 
-#brower p a { color: #ff9c00; }
+#browser_hint #browser_container .explain .explain_list { margin-top: 40px; overflow: hidden; }
 
-@media \0screen\,screen\9 { /* 只支持IE6、7、8 */
-  #brower-max { background-color: #000000; filter: Alpha(opacity=50); *zoom: 1; /* 激活IE6、7的haslayout属性，让它读懂Alpha */ }
-  #brower { filter: Alpha(opacity=100); } }
+#browser_hint #browser_container .explain .item { width: 110px; margin: 0 20px; text-align: center; display: inline-block; }
 
+#browser_hint #browser_container .explain .item .item_icon { width: 100px; height: 100px; margin: 0 auto; border-radius: 50%; line-height: 100px; box-sizing: content-box; background: #66CC66; font-weight: bold; font-size: 22px; color: #fff; cursor: pointer; }
+
+#browser_hint #browser_container .explain .item .item_text { font-size: 16px; margin-top: 10px; color: #555; }
+
+/* 浏览器低版本提示 END */
 /* 清除浮动 */
 .clear_float::after { content: ' '; display: block; clear: both; }
 
