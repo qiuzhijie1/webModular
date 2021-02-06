@@ -86,6 +86,70 @@ $(function () {
 
 
 
+
+
+	/* 头部手机菜单按钮 STRAT */
+	$('.head_mobile_btn').click(function () {
+		if ($(this).hasClass('active')) {
+			$(this).removeClass('active');
+		} else {
+			$(this).addClass('active');
+		}
+	})
+	/* 头部手机菜单1 END */
+
+
+	/* 头部下拉1 STRAT */
+	new Swiper('.head_dropdown .swiper-container', {
+		paginationClickable: true,
+		observer: true,
+		slidesPerView: 5,
+		observeParents: true,
+	})
+
+	//手机下拉
+	$(".head_dropdown .mobile_down .block").click(function () {
+		if ($(this).hasClass('active')) {
+			$(".head_dropdown .mobile_down .block").removeClass('active').find('.mobile_nav_down').stop(true, false).slideUp();
+
+		} else {
+			$(".head_dropdown .mobile_down .block").removeClass('active').find('.mobile_nav_down').stop(true, false).slideUp();
+			$(this).addClass('active').find('.mobile_nav_down').slideDown();
+		}
+	})
+	/* 头部下拉1 END */
+
+
+
+	//视频弹窗
+	$('.exit_video').click(function () {
+		$(".video_popup").fadeOut(30);
+		$('.video_popup .video').html('');
+	})
+
+	$('.video_play').click(function () {
+		var video = $(this).data('url');
+		if (video != undefined) {
+			$(".video_popup").fadeIn();
+			$('.video_popup .video').html('<video  id="video" src="' + video + '" controls="controls"></video>');
+			$('.video_popup .video video').get(0).play();
+			var elevideo = document.getElementById("video");
+			elevideo.addEventListener('pause', function () { //暂停开始执行的函数
+				$(".video_popup").fadeOut(30);
+				$('.video_popup .video').html('');
+			});
+		}
+	})
+
+
+	$('.video_popup').click(function () {
+		$(".video_popup").fadeOut(30);
+		$('.video_popup .video').html('');
+	})
+
+
+
+
 	// fadeIn动画
 	scrollTop('.animate_fadeLeft200', 'fadeInLeft200');
 	scrollTop('.animate_fadeLeft150', 'fadeInLeft150');
@@ -287,3 +351,35 @@ function switcherActive(el, container) {
 		}, false);
 	}
 })(750, 750);
+
+
+
+
+//头部下拉
+function headDown(el) {
+	var windowT = $(window).scrollTop();
+	var windowW = $(window).width();
+	if (el.hasClass('active')) {
+
+		$(document).off('mousewheel');
+		$('html,body').css('overflow', '');
+		el.removeClass('active');
+		$(".head_dropdown1").fadeOut();
+		if (windowW > 768) {
+			if (windowT == 0) {
+				$('.header').removeClass('active');
+			}
+		}
+
+	} else {
+		$(document).on('mousewheel', function (event, delta) {
+			return { passive: false };
+		});
+		$('.header').addClass('active');
+		el.addClass('active');
+		$('html,body').css('overflow', 'hidden');
+		$(".head_dropdown1").fadeIn();
+
+	}
+
+}

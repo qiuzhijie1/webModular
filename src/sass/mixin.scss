@@ -1,25 +1,24 @@
 // 颜色
-$color: #1f6cc1;
+$color: #006ebd;
 $bgcolor:#f8f8f8;
 $black_color:#000000;
 $white_color:#ffffff;
 
 // 宽度
-$minWidth: 1200px;
+$minWidth: 320px;
 $maxWidth: 1920px;
 $centerWidth: 1200px;
 
 
 // 字体
-$fontSize: 16px;
+$fontSize: 14px;
 $fontsColor: #333;
-$fontFamily: 微软雅黑;
+$fontFamily: '';
 
 
-// 动画过度
-$transitionTime:0.3s;
 
-
+//动画时间
+$transitionTime:.5s;
 
 
 
@@ -102,6 +101,16 @@ $transitionTime:0.3s;
     transform: rotateZ($z);
 }
 
+@mixin transformRotate3d ($x, $y, $z, $angle) {
+    // 旋转
+    transform: rotate3d($x, $y, $z, $angle);
+    -webkit-transform: rotate3d($x, $y, $z, $angle);
+    -moz-transform: rotate3d($x, $y, $z, $angle);
+    -o-transform: rotate3d($x, $y, $z, $angle);
+}
+
+
+
 @mixin animationDelay ($time) {
     //动画延时
     -o-animation-delay: $time;
@@ -126,13 +135,43 @@ $transitionTime:0.3s;
     animation: $name $time forwards;
 }
 
+@mixin animationLn ($name, $time) {
+    //创建一个简单动画
+    -o-animation: $name $time linear;
+    -moz-animation: $name $time linear;
+    -webkit-animation: $name $time linear;
+    animation: $name $time linear;
+}
+
+@mixin animationIn ($name, $time) {
+    //创建一个循环动画
+    -o-animation: $name $time infinite;
+    -moz-animation: $name $time infinite;
+    -webkit-animation: $name $time infinite;
+    animation: $name $time infinite;
+}
+
+
 @mixin animationLoop($n, $time) {
+
     //动画延时，从1开始
-   @for $i from 1 through $n {
-       &:nth-child(#{$i}) {
-           @include animationDelay($time * $i - $time);
-       }
-   }
+    @for $i from 1 through $n {
+        &:nth-child(#{$i}) {
+            @include animationDelay($time * $i - $time);
+        }
+    }
+}
+
+@mixin animationLoopc($n, $time, $name) {
+
+    //动画延时，从1开始
+    @for $i from 1 through $n {
+        &:nth-child(#{$i}) {
+            .#{$name} {
+                @include animationDelay($time * $i - $time);
+            }
+        }
+    }
 }
 
 @mixin muchText ($num, $lineH, $judge) {
@@ -195,6 +234,31 @@ $transitionTime:0.3s;
     -moz-box-shadow: $shadows;
     -webkit-box-shadow: $shadows;
     box-shadow: $shadows;
+}
+
+
+@mixin iocn-triangle($length, $direction, $color) {
+    // 三角形图标
+    width: 0;
+    height: 0;
+    border: $length solid;
+
+    @if $direction=='top' {
+        border-color: $color transparent transparent transparent;
+    }
+
+    @if $direction=='right' {
+        border-color: transparent $color transparent transparent;
+    }
+
+    @if $direction=='bottom' {
+        border-color: transparent transparent $color transparent;
+    }
+
+    @if $direction=='left' {
+        border-color: transparent transparent transparent $color;
+    }
+
 }
 
 

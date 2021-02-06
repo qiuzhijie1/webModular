@@ -1,9 +1,18 @@
+/*
+ * @Author: pikaqiu
+ * @Date: 2020-12-14 09:44:24
+ * @LastEditors: pikaqiu
+ * @LastEditTime: 2020-12-18 09:35:18
+ */
 // 引入开发依赖包
 const gulp = require('gulp');
 const fileInclude = require('gulp-file-include'); //模块化HTML
+const changed = require('gulp-changed'); //只编译修改过文件
+const clean = require('gulp-clean');//清理输出文件夹
 const less = require('gulp-less'); //解析less
 const sass = require('gulp-sass'); //解析sass
 const livereload = require('gulp-livereload'); //监听文件的变化
+const notify = require('gulp-notify'); //处理报错
 const connect = require('gulp-connect'); //搭建临时服务器
 const open = require('open'); //直接运行临时服务器
 
@@ -25,24 +34,24 @@ gulp.task('less', function () {
         .pipe(less())
         .pipe(gulp.dest('src/css/'))
         .pipe(livereload())
-        .pipe(connect.reload());
+        .pipe(connect.reload())
 })
 
 gulp.task('sass', function () {
     return gulp.src(['src/sass/*.*', '!src/sass/mixin.*'])
         .pipe(sass({
             outputStyle: 'compact'
-          }))
+        }))
         .pipe(gulp.dest('src/css/'))
         .pipe(livereload())
-        .pipe(connect.reload());
+        .pipe(connect.reload())
 })
 
 gulp.task('css', ['less', 'sass'], function () {
     return gulp.src('src/css/*.css')
         .pipe(gulp.dest('dist/css/'))
         .pipe(livereload())
-        .pipe(connect.reload());
+        .pipe(connect.reload())
 })
 
 gulp.task('js', function () {
