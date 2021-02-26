@@ -1,6 +1,6 @@
 /*
  * @Author: pikaqiu
- * @Date: 2020-12-14 09:44:24
+ * @Date: 2021-02-24 09:44:24
  * @LastEditors: pikaqiu
  * @LastEditTime: 2020-12-18 09:35:18
  */
@@ -11,12 +11,17 @@ const changed = require('gulp-changed'); //只编译修改过文件
 const clean = require('gulp-clean');//清理输出文件夹
 const less = require('gulp-less'); //解析less
 const sass = require('gulp-sass'); //解析sass
+const debug = require('gulp-debug');//debug
 const livereload = require('gulp-livereload'); //监听文件的变化
-const notify = require('gulp-notify'); //处理报错
 const connect = require('gulp-connect'); //搭建临时服务器
 const open = require('open'); //直接运行临时服务器
 
 
+//报错提示
+function showError(error) {
+    console.log(error.toString());
+    this.emit('end');
+}
 
 
 gulp.task('fileInclude', function () {
@@ -32,6 +37,7 @@ gulp.task('fileInclude', function () {
 gulp.task('less', function () {
     return gulp.src('src/less/*.less')
         .pipe(less())
+        .on('error', showError)  // 注意error事件需要放到任务后面
         .pipe(gulp.dest('src/css/'))
         .pipe(livereload())
         .pipe(connect.reload())
@@ -42,6 +48,7 @@ gulp.task('sass', function () {
         .pipe(sass({
             outputStyle: 'compact'
         }))
+        .on('error', showError)  // 注意error事件需要放到任务后面
         .pipe(gulp.dest('src/css/'))
         .pipe(livereload())
         .pipe(connect.reload())
@@ -49,6 +56,8 @@ gulp.task('sass', function () {
 
 gulp.task('css', ['less', 'sass'], function () {
     return gulp.src('src/css/*.css')
+        .pipe(changed('dist/css/')) 
+        // .pipe(debug({title: '编译:'}))
         .pipe(gulp.dest('dist/css/'))
         .pipe(livereload())
         .pipe(connect.reload())
@@ -56,6 +65,7 @@ gulp.task('css', ['less', 'sass'], function () {
 
 gulp.task('js', function () {
     return gulp.src('src/js/*.js')
+        .pipe(changed('dist/js/')) 
         .pipe(gulp.dest('dist/js/'))
         .pipe(livereload())
         .pipe(connect.reload());
